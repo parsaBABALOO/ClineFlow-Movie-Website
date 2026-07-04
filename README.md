@@ -85,13 +85,13 @@ FontAwesome - For high-quality vector typography icons.
 
 ## ⚙️ Installation & Local Setup
 
-# 1. Clone the Repository:
+## 1. Clone the Repository:
 
 ```bash
 git clone [https://github.com/parsaBABALOO/CineFlow-Movie-Website.git](https://github.com/parsaBABALOO/CineFlow-Movie-Website.git)
 ```
 
-# 2. Add Missing Media Assets:
+## 2. Add Missing Media Assets:
 
 Place a background audio file inside assets/audio/bg-music.mp3.
 
@@ -99,7 +99,7 @@ Place an ambient video clip inside assets/video/hero-bg.mp4.
 
 Place your layout logo graphic inside assets/logo.png.
 
-# 3. Run the Application:
+## 3. Run the Application:
 
 Open index.html directly or launch via a local web server tool such as VS Code Live Server to ensure full capabilities.
 
@@ -113,7 +113,8 @@ Engineered with passion in 2026. All rights reserved.
 
 ## 📬 Contact
 
-Developer: PARSA BABALOO 
+Developer: PARSA BABALOO
+
 Email: parsababalo1403@gmail.com
 
 Note: Any other contact information (including Telegram channels or usernames) associated with this project is not official and should be considered invalid or unrelated to the developer.
