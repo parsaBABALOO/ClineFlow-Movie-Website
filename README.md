@@ -110,8 +110,14 @@ Open index.html directly or launch via a local web server tool such as VS Code L
 Engineered with passion in 2026. All rights reserved.
 
 ---
-Developer: PARSA BABALOO
+
+## 📬 Contact
+
+Developer: PARSA BABALOO 
+Email: parsababalo1403@gmail.com
+
+Note: Any other contact information (including Telegram channels or usernames) associated with this project is not official and should be considered invalid or unrelated to the developer.
 
 
 
-
+---
