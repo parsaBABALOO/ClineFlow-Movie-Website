@@ -1,0 +1,127 @@
+/* ==========================================================================
+   1. LAPTOPS & SMALL DESKTOPS (Max-width: 1024px)
+   ========================================================================== */
+@media screen and (max-width: 1024px) {
+    .section-padding {
+        padding: 80px 5%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .charts-container {
+        gap: 30px;
+    }
+}
+
+/* ==========================================================================
+   2. TABLETS & LARGE PHONES (Max-width: 768px)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    /* Disable Custom Cursor on touch devices for better UX */
+    .custom-cursor, .cursor-ripple {
+        display: none !important;
+    }
+    * {
+        cursor: auto !important;
+    }
+
+    .section-padding {
+        padding: 60px 4%;
+    }
+
+    /* Navbar adjustments */
+    .navbar {
+        padding: 15px 4%;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    #live-clock {
+        display: none; /* Hide clock on small tablets/mobiles to save space */
+    }
+
+    .nav-controls {
+        gap: 15px;
+    }
+
+    /* Hero section */
+    .hero-content h1 {
+        font-size: 2.2rem;
+        min-height: 60px;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    /* Counters adjustment */
+    .counters-wrapper {
+        gap: 20px;
+    }
+
+    .counter-item {
+        padding: 15px;
+        min-width: 45%;
+    }
+
+    .counter-number {
+        font-size: 2.2rem;
+    }
+
+    /* Charts */
+    .circle-chart {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Forms & Glass Panels */
+    .contact-form, .testimonial-card {
+        padding: 25px 15px;
+    }
+}
+
+/* ==========================================================================
+   3. SMALL MOBILE DEVICES (Max-width: 480px)
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .section-padding {
+        padding: 50px 3%;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .glass-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .movie-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        max-width: 280px;
+        margin: 40px auto 0;
+    }
+
+    .counter-item {
+        min-width: 100%; /* Stack counters vertically */
+    }
+
+    .social-links {
+        gap: 15px;
+    }
+}

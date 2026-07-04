@@ -1,0 +1,598 @@
+/* ==========================================================================
+   1. VARIABLES & ROOT STYLES (Theme Management)
+   ========================================================================== */
+:root {
+    /* Dark Theme (Default) */
+    --bg-primary: #0a0a0c;
+    --bg-secondary: #121216;
+    --text-main: #ffffff;
+    --text-muted: #a0a0ab;
+    --accent-neon: #00f0ff; /* Neon Cyan */
+    --accent-glow: rgba(0, 240, 255, 0.4);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: rgba(0, 0, 0, 0.5);
+    
+    /* Animation Speeds */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.4s ease;
+}
+
+.light-theme {
+    /* Light Theme Toggle */
+    --bg-primary: #f4f5f7;
+    --bg-secondary: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --accent-neon: #ff0055; /* Neon Pink for Light Mode contrast */
+    --accent-glow: rgba(255, 0, 85, 0.3);
+    --glass-bg: rgba(0, 0, 0, 0.02);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   2. RESET & BASE STYLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none !important; /* Forces Custom Cursor everywhere */
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    overflow-x: hidden;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+.section-padding {
+    padding: 100px 8%;
+    position: relative;
+}
+
+/* ==========================================================================
+   3. CUSTOM CURSOR & RIPPLE
+   ========================================================================== */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-neon);
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    transition: width var(--transition-fast), height var(--transition-fast), background-color var(--transition-fast);
+}
+
+.custom-cursor.hovered {
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent-glow);
+    border-color: var(--accent-neon);
+}
+
+.cursor-ripple {
+    position: fixed;
+    border: 2px solid var(--accent-neon);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0;
+    animation: rippleEffect 0.6s ease-out;
+}
+
+@keyframes rippleEffect {
+    0% { width: 10px; height: 10px; opacity: 1; }
+    100% { width: 80px; height: 80px; opacity: 0; }
+}
+
+/* ==========================================================================
+   4. PROFESSIONAL LOADER
+   ========================================================================== */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0a0a0c;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity var(--transition-normal) forwards;
+}
+
+.loader-content {
+    text-align: center;
+    position: relative;
+}
+
+.loader-logo {
+    width: 120px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px var(--accent-neon));
+}
+
+.loader-circle {
+    width: 100px;
+    height: 100px;
+    border: 3px solid var(--glass-border);
+    border-top: 3px solid var(--accent-neon);
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    animation: spin 1s linear infinite;
+}
+
+.loader-percentage {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: var(--accent-neon);
+    display: block;
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   5. BACKGROUND PARTICLES
+   ========================================================================== */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   6. GLASSMORPHISM COMPONENTS
+   ========================================================================== */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+}
+
+.glass-btn {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 15px var(--glass-shadow);
+}
+
+.glass-btn:hover {
+    background: var(--accent-neon);
+    color: #000;
+    box-shadow: 0 0 20px var(--accent-glow);
+    border-color: var(--accent-neon);
+}
+
+/* ==========================================================================
+   7. HEADER & NAVIGATION
+   ========================================================================== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(10, 10, 12, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--text-main);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-controls button {
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    transition: color var(--transition-fast);
+}
+
+.nav-controls button:hover {
+    color: var(--accent-neon);
+}
+
+#live-clock {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    background: var(--glass-bg);
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    color: var(--accent-neon);
+}
+
+/* ==========================================================================
+   8. CINEMATIC HERO SECTION (Fix Size & Fullscreen Cover)
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    z-index: 2;
+}
+
+#hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -2;
+    pointer-events: none;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 10, 12, 0.3), var(--bg-primary));
+    z-index: -1;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 5;
+}
+
+/* ==========================================================================
+   9. LIVE SEARCH BAR
+   ========================================================================== */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 25px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    color: var(--text-main);
+    font-size: 1.1rem;
+    backdrop-filter: blur(10px);
+    transition: all var(--transition-normal);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--accent-neon);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* ==========================================================================
+   10. MOVIE GRID & ANIMATED CARDS (Hover Trailer, Favorite, Rating)
+   ========================================================================== */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    position: relative;
+    z-index: 5;
+}
+
+.movie-card {
+    position: relative;
+    height: 380px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow var(--transition-normal);
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity var(--transition-normal);
+}
+
+.movie-card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    transform: translateY(0);
+    transition: transform var(--transition-normal);
+}
+
+.movie-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Stars & Favorite Elements */
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stars-rating i {
+    color: #ffc107;
+    margin-right: 2px;
+}
+
+.fav-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    transition: color var(--transition-fast);
+}
+
+.fav-btn.active {
+    color: #ff0055;
+    animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+    50% { transform: scale(1.3); }
+}
+
+/* ==========================================================================
+   11. TRENDING SECTION (Horizontal Swiper)
+   ========================================================================== */
+.trending-slider {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: var(--accent-neon) !important;
+}
+
+/* ==========================================================================
+   12. ANIMATED COUNTERS
+   ========================================================================== */
+.counters-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    text-align: center;
+}
+
+.counter-item {
+    padding: 30px;
+    min-width: 200px;
+}
+
+.counter-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent-neon);
+    text-shadow: 0 0 10px var(--accent-glow);
+    margin-bottom: 10px;
+}
+
+.counter-label {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   13. SKILLS / STATS CHART (Circular Progress)
+   ========================================================================== */
+.charts-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.chart-box {
+    text-align: center;
+}
+
+.circle-chart {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+.circle-chart svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    fill: none;
+    stroke: var(--glass-border);
+    stroke-width: 8;
+}
+
+.circle-progress {
+    fill: none;
+    stroke: var(--accent-neon);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440; /* Animated via JS */
+    transition: stroke-dashoffset 1.5s ease-out;
+}
+
+.chart-percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   14. TESTIMONIALS SLIDER
+   ========================================================================== */
+.testimonial-card {
+    padding: 40px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-neon);
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.user-review {
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   15. CONTACT FORM (with Custom Inputs)
+   ========================================================================== */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--glass-border);
+    color: var(--text-main);
+    font-size: 1rem;
+    transition: border-color var(--transition-normal);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-neon);
+}
+
+.error-msg {
+    color: #ff0055;
+    font-size: 0.85rem;
+    position: absolute;
+    bottom: -20px;
+    left: 10px;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.error-msg.visible {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   16. FOOTER WITH ANIMATION
+   ========================================================================== */
+.main-footer {
+    padding: 40px 8%;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.social-icon:hover {
+    color: var(--accent-neon);
+    transform: translateY(-5px);
+}
