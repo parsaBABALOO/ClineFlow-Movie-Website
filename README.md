@@ -1,4 +1,3 @@
-# ClineFlow-Movie-Website
 # 🎬 CineFlow - Modern Cinematic Movie Hub
 
 CineFlow is a premium, high-performance, and futuristic movie discovery platform designed with a **Cyberpunk Neon aesthetic** and modern **Glassmorphic** UI elements. Built as a fully responsive client-side web application, it integrates advanced CSS effects, dynamic Vanilla JS features, and popular animation libraries to deliver a next-generation user experience.
